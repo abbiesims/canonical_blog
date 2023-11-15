@@ -14,7 +14,8 @@ function getCategory(post: PostsResponse) {
           }
       }
     }
-    return category;
+     // if there is no category, return 'General'
+    return category || 'General';
 }
 
 export default getCategory;
