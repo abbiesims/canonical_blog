@@ -5,10 +5,8 @@
 
 .card {
     max-width: 450px;
-    -webkit-box-shadow: 0 0 5px 2px grey;
-    -moz-box-shadow: 0 0 5px 2px grey;
     box-shadow: 0 0 5px 2px grey;
-    border-radius: 0.4%;
+    border-radius: 2px;
     padding: 5px 10px;
     margin: 30px;
     border-top: 4px solid #a87ca0;
@@ -19,7 +17,7 @@
 }
 
 .content-section {
-    padding: 8px;
+    padding: 10px;
 }
 
 .article-topic {
