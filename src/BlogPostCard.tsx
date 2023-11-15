@@ -1,53 +1,55 @@
-import React, { useEffect, useState } from 'react';
-import fetchData from './fetchData';
-import { PostsResponse, WpTerm3 } from './jsonStructure';
-import GenerateCard from './GenerateCard';
+import { Card, Link } from "@canonical/react-components";
+import { PostsResponse } from "./jsonStructure";
+import getCategory from "./cardAttributes/getCategory";
+import getDate from "./cardAttributes/getDate";
+import './card.css';
 
-// Elements that we need
-// 1. Topic - links to a number
-// 2. Image = `featured_media`
-// 3. Title = `title.rendered`
-// 4. Author = "post._embedded.author[0].name" (assuming that there is only one author per post)
-// 5. Date - need to transform from string to readable date
-// 6. Post type = categories? = "post._embedded['wp:term'][0][0].name" (again, assuming there is only one category)
-
-function BlogPostCard() {
-  const [data, setData] = useState<PostsResponse[] | null>(null);
-  const [error, setError] = useState<Error | null>(null);
-
-  useEffect(() => {
-    const fetchDataAndHandleErrors = async () => {
-      try {
-        const result = await fetchData();
-        setData(result as PostsResponse[]);
-      } catch (error) {
-        setError(error as Error);
-      }
-    };
-
-    fetchDataAndHandleErrors();
-  }, []); // The empty dependency array ensures that the effect runs only once, similar to componentDidMount
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
+interface BlogPostCardProps {
+    blogPost: PostsResponse;
   }
-
-  if (!data) {
-    return <div>Loading...</div>;
-  }
-
-  return (
-    <div>
-      {data.map((post) => {
-        return (
-            <div>
-              <GenerateCard post={post}/>
+  
+  function BlogPostCard({ blogPost: blogPost }: BlogPostCardProps) {
+    const topic = getCategory(blogPost, blogPost.topic[0]);
+    const image = blogPost.featured_media;
+    const title = blogPost.title.rendered;
+    const titleURL = blogPost._links.self[0].href;
+    const author = blogPost._embedded.author[0].name;
+    const authorURL = blogPost._embedded.author[0].link;
+    const date = getDate(blogPost.date.toString());
+    const category = getCategory(blogPost, blogPost.categories[0]);
+    return <>
+      <Card className="card">
+        <div>
+          <section>
+            <p className="article-topic">{topic}</p>
+          </section>
+          <section>
+            <div className="main-content">
+              <hr className="separator" />
+              <div className="content-section">
+                <img className="post-image" src={image} alt="blog post image" />
+              </div>
+              <div className="content-section">
+                <div className="title-container">
+                  <Link href={titleURL} className="article-title">
+                    {title}
+                  </Link>
+                </div>
+              </div>
+              <div className="content-section">
+                <p className="article-author-date">
+                  By <Link href={authorURL} className="author-link">{author}</Link> on {date}
+                </p>
+              </div>
             </div>
-        )
-      })}
-    </div>
-  );
-}
-
+          </section>
+          <section>
+            <hr className="separator" />
+            <p className="article-category">{category}</p>
+          </section>
+        </div>
+      </Card>
+    </>
+  }
 
 export default BlogPostCard;

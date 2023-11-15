@@ -1,14 +1,12 @@
 import { PostsResponse } from "../jsonStructure";
 
-function getCategory(post: PostsResponse) {
-    const categoryNumber = post.categories[0];
+function getCategory(post: PostsResponse, queryNumber: number) {
     const wpTerm = post._embedded['wp:term'];
-  
     let category;
     for (let i = 0; i < wpTerm.length; i++) {
       for (let j = 0; j < wpTerm[i].length; j++) {
           let item = wpTerm[i][j]
-          if (item.id === categoryNumber) {
+          if (item.id === queryNumber) {
               category = item.name;
               return category;
           }
