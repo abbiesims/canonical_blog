@@ -1,6 +1,4 @@
-import React from 'react';
 import { format } from 'date-fns';
-import { PostsResponse } from "../jsonStructure";
 import { enGB } from 'date-fns/locale';
 
 function getDate(dateString: string) {

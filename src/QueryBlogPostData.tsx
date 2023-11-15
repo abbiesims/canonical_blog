@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import fetchData from './fetchData';
 import { PostsResponse, WpTerm3 } from './jsonStructure';
 import BlogPostCard from './BlogPostCard';
-import './card.css';
+import './style/card.css';
 
 // Elements that we need
 // 1. Topic - links to a number

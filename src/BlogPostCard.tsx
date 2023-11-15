@@ -1,8 +1,8 @@
 import { Card, Link } from "@canonical/react-components";
 import { PostsResponse } from "./jsonStructure";
-import getCategory from "./cardAttributes/getCategory";
-import getDate from "./cardAttributes/getDate";
-import './card.css';
+import getCategory from "./helperFunctions/getCategory";
+import getDate from "./helperFunctions/getDate";
+import './style/card.css';
 
 interface BlogPostCardProps {
     blogPost: PostsResponse;
