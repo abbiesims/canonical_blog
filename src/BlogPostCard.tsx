@@ -30,7 +30,7 @@ interface BlogPostCardProps {
             <div className="main-content">
               <hr className="separator" />
               <div className="content-section">
-                <img className="post-image" src={image} alt="blog post image" />
+                <a href={titleURL}><img className="post-image" src={image} alt="blog post image" /></a>
               </div>
               <div className="content-section">
                 <div className="title-container">
