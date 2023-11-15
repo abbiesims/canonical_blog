@@ -4,7 +4,6 @@ import getCategory from "./cardAttributes/getCategory";
 import getAuthor from "./cardAttributes/getAuthor";
 import getAuthorURL from "./cardAttributes/getAuthorUrl";
 import getDate from "./cardAttributes/getDate";
-import getImage from "./cardAttributes/getImage";
 import getTitle from "./cardAttributes/getTitle";
 import getTitleURL from "./cardAttributes/getTitleUrl";
 import getTopic from "./cardAttributes/getTopic";
@@ -16,7 +15,7 @@ interface GenerateCardProps {
   
   function GenerateCard({ post }: GenerateCardProps) {
     const topic = getTopic(post);
-    const image = getImage(post);
+    const image = post.featured_media;
     const title = getTitle(post);
     const titleURL = getTitleURL(post);
     const author = getAuthor(post);
@@ -30,7 +29,9 @@ interface GenerateCardProps {
           <p>{topic.toUpperCase()}</p>
           <section>
             <hr className="separator" />
-            <p>This is the main content section</p>
+            <div>
+              <img className="post_image" src={image} alt="blog post image" />
+            </div>
           </section>
           <section>
             <hr className="separator" />
