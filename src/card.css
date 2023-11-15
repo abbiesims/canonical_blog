@@ -3,7 +3,7 @@
     -webkit-box-shadow: 0 0 5px 2px grey;
     -moz-box-shadow: 0 0 5px 2px grey;
     box-shadow: 0 0 5px 2px grey;
-    border-radius: 0.8%;
+    border-radius: 0.4%;
     padding: 10px 20px;
     margin: 20px;
     border-top: 4px solid #a87ca0;
@@ -13,17 +13,28 @@
     border: 1px dotted black;
 }
 
-.content_section {
+.content-section {
     padding: 10px;
 }
 
-.post_image {
+.article-topic {
+    font-size: 1.2rem;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.post-image {
     width: 100%;
 }
 
-.article_title {
+.article-title {
     font-size: 1.5rem;
     font-weight: 300;
     text-decoration: none;
     color: #6294b4;
+}
+
+.article-category {
+    font-size: 1.1rem;
+    font-weight: 300;
 }

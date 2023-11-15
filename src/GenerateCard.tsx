@@ -26,22 +26,22 @@ interface GenerateCardProps {
       <Card className="card">
         <div>
           <section>
-            <p>{topic.toUpperCase()}</p>
+            <p className="article-topic">{topic}</p>
           </section>
           <section>
             <hr className="separator" />
-            <div className="content_section">
-              <img className="post_image" src={image} alt="blog post image" />
+            <div className="content-section">
+              <img className="post-image" src={image} alt="blog post image" />
             </div>
-            <div className="content_section">
-              <a href={titleURL} className="article_title">
+            <div className="content-section">
+              <a href={titleURL} className="article-title">
                 {title}
               </a>
             </div>
           </section>
           <section>
             <hr className="separator" />
-            <p>{category}</p>
+            <p className="article-category">{category}</p>
           </section>
         </div>
       </Card>
