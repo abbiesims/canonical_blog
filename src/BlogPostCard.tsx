@@ -9,14 +9,17 @@ interface BlogPostCardProps {
   }
   
   function BlogPostCard({ blogPost: blogPost }: BlogPostCardProps) {
+    // obtain each section of the blog post card
     const topic = getCategory(blogPost, blogPost.topic[0]);
     const image = blogPost.featured_media;
     const title = blogPost.title.rendered;
+    // assuming that there is only one URL and author, otherwise these would need to be handled without the indexing approach
     const titleURL = blogPost._links.self[0].href;
     const author = blogPost._embedded.author[0].name;
     const authorURL = blogPost._embedded.author[0].link;
     const date = getDate(blogPost.date.toString());
     const category = getCategory(blogPost, blogPost.categories[0]);
+    
     return <>
       <Card className="card">
         <div>
