@@ -8,7 +8,7 @@ function getCategory(post: PostsResponse) {
     for (let i = 0; i < wpTerm.length; i++) {
       for (let j = 0; j < wpTerm[i].length; j++) {
           let item = wpTerm[i][j]
-          if (item.id === category) {
+          if (item.id === categoryNumber) {
               category = item.name;
               return category;
           }

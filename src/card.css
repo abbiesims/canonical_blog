@@ -1,0 +1,15 @@
+.card {
+    max-width: 400px;
+    -webkit-box-shadow: 0 0 5px 2px grey;
+    -moz-box-shadow: 0 0 5px 2px grey;
+    box-shadow: 0 0 5px 2px grey;
+    border-radius: 0.8%;
+    padding: 10px 20px;
+    margin: 20px;
+    border-top: 4px solid #a87ca0;
+}
+
+.separator {
+    border: 1px dotted black;
+
+}
