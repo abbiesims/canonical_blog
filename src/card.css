@@ -13,6 +13,17 @@
     border: 1px dotted black;
 }
 
+.content_section {
+    padding: 10px;
+}
+
 .post_image {
     width: 100%;
+}
+
+.article_title {
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-decoration: none;
+    color: #6294b4;
 }

@@ -1,11 +1,10 @@
-import { Card, Link, Strip } from "@canonical/react-components";
+import { Card, Link } from "@canonical/react-components";
 import { PostsResponse } from "./jsonStructure";
 import getCategory from "./cardAttributes/getCategory";
 import getAuthor from "./cardAttributes/getAuthor";
 import getAuthorURL from "./cardAttributes/getAuthorUrl";
 import getDate from "./cardAttributes/getDate";
 import getTitle from "./cardAttributes/getTitle";
-import getTitleURL from "./cardAttributes/getTitleUrl";
 import getTopic from "./cardAttributes/getTopic";
 import './card.css';
 
@@ -17,7 +16,7 @@ interface GenerateCardProps {
     const topic = getTopic(post);
     const image = post.featured_media;
     const title = getTitle(post);
-    const titleURL = getTitleURL(post);
+    const titleURL = post._links.self[0].href;
     const author = getAuthor(post);
     const authorURL = getAuthorURL(post);
     const date = getDate(post);
@@ -26,11 +25,18 @@ interface GenerateCardProps {
     return <>
       <Card className="card">
         <div>
-          <p>{topic.toUpperCase()}</p>
+          <section>
+            <p>{topic.toUpperCase()}</p>
+          </section>
           <section>
             <hr className="separator" />
-            <div>
+            <div className="content_section">
               <img className="post_image" src={image} alt="blog post image" />
+            </div>
+            <div className="content_section">
+              <a href={titleURL} className="article_title">
+                {title}
+              </a>
             </div>
           </section>
           <section>
