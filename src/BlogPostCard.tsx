@@ -3,7 +3,7 @@ import fetchData from './fetchData';
 import { PostsResponse, WpTerm3 } from './jsonStructure';
 import GenerateCard from './GenerateCard';
 
-// Items that we need
+// Elements that we need
 // 1. Topic - links to a number
 // 2. Image = `featured_media`
 // 3. Title = `title.rendered`

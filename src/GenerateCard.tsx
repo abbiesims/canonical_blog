@@ -1,10 +1,7 @@
 import { Card, Link } from "@canonical/react-components";
 import { PostsResponse } from "./jsonStructure";
 import getCategory from "./cardAttributes/getCategory";
-import getAuthor from "./cardAttributes/getAuthor";
-import getAuthorURL from "./cardAttributes/getAuthorUrl";
 import getDate from "./cardAttributes/getDate";
-import getTitle from "./cardAttributes/getTitle";
 import getTopic from "./cardAttributes/getTopic";
 import './card.css';
 
@@ -15,13 +12,12 @@ interface GenerateCardProps {
   function GenerateCard({ post }: GenerateCardProps) {
     const topic = getTopic(post);
     const image = post.featured_media;
-    const title = getTitle(post);
+    const title = post.title.rendered;
     const titleURL = post._links.self[0].href;
-    const author = getAuthor(post);
-    const authorURL = getAuthorURL(post);
-    const date = getDate(post);
+    const author = post._embedded.author[0].name;
+    const authorURL = post._embedded.author[0].link;
+    const date = getDate(post.date.toString());
     const category = getCategory(post);
-    console.log(category)
     return <>
       <Card className="card">
         <div>
@@ -34,9 +30,14 @@ interface GenerateCardProps {
               <img className="post-image" src={image} alt="blog post image" />
             </div>
             <div className="content-section">
-              <a href={titleURL} className="article-title">
+              <Link href={titleURL} className="article-title">
                 {title}
-              </a>
+              </Link>
+            </div>
+            <div className="content-section">
+              <p className="article-author-date">
+                By <Link href={authorURL} className="author-link">{author}</Link> on {date}
+              </p>
             </div>
           </section>
           <section>
